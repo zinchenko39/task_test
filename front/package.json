@@ -33,6 +33,5 @@
     "patch-package": "^8.0.1",
     "prettier": "^3.6.2",
     "vite": "^7.1.7"
-  },
-  "homepage": "https://zinchenko39.github.io/task_test/"
+  }
 }
