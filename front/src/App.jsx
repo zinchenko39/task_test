@@ -71,36 +71,6 @@ function App() {
     localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(selectedItems));
   }, [selectedItems]);
 
-  useEffect(() => {
-    const syncInterval = setInterval(async () => {
-      try {
-        let allItems = [];
-        let page = 1;
-        let hasMore = true;
-
-        while (hasMore) {
-          const data = await fetchSelectedItems(page, 100, "");
-          allItems = [...allItems, ...data.items];
-          hasMore = data.items.length === 100;
-          page++;
-        }
-
-        setSelectedItems((prev) => {
-          const prevStr = JSON.stringify([...prev].sort());
-          const newStr = JSON.stringify([...allItems].sort());
-          if (prevStr !== newStr) {
-            return allItems;
-          }
-          return prev;
-        });
-      } catch (error) {
-        console.error("Failed to sync selected items:", error);
-      }
-    }, 2000);
-
-    return () => clearInterval(syncInterval);
-  }, []);
-
   const handleSelectionChange = useCallback(() => {
     setRefreshKey((prev) => prev + 1);
 
