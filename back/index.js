@@ -13,7 +13,6 @@ app.use("/", apiRoutes);
 
 app.listen(PORT, () => {
   console.log(`Server is running on http://localhost:${PORT}`);
-
   generateInitialItems(1000000, 10000, 10);
 
   startSchedulers();
