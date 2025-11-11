@@ -1,4 +1,4 @@
-const API_BASE_URL = "http://localhost:3001";
+import { API_BASE_URL } from "./const.js";
 
 /**
  * Получить список всех элементов (кроме выбранных)
